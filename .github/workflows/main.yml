@@ -1,0 +1,48 @@
+#include <Servo.h> 
+int pul0 = 0;
+int pu7 = 0 ; 
+int pul2 = 0;
+int pul3 = 0;
+//AUTOR: LUIS FELIPE LUGO PUERTAS
+//FECHA: 07/07/2018
+
+Servo servo1; //declaramos la variable que controlara el servomotor
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  servo1.attach(5); // asignamos el pin 5(analogo PMW) a la variable servo1
+  pinMode(pul0, INPUT );
+  pinMode(pu7, INPUT );
+  pinMode(pul2, INPUT );
+  pinMode(pul3, INPUT );
+  servo1.write(0); //PARA INICIAR EL SERVO EN 0 GRADOS
+
+
+}
+
+void loop() {
+
+  // put your main code here, to run repeatedly:
+  pul0 = digitalRead(10);
+  pu7 = digitalRead(7);
+  pul2 = digitalRead(12);
+  pul3 = digitalRead(13);
+  //Serial.println(pul0);
+  //Serial.println(pul1);
+  //Serial.println(pul2);
+  //Serial.println(pul3);
+  if (pul0 == HIGH) {
+    servo1.write(0);
+  }
+  if (pu7 == 1) {
+    servo1.write(45);
+    }
+  if (pul2 == 1) {
+    servo1.write(90);
+  }
+  if (pul3 == 1) {
+    servo1.write(170);
+  }
+
+}
